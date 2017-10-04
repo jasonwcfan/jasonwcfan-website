@@ -33,7 +33,7 @@ var timelines = {
     // Timeline that coordinates text fade-ins
     textFadeInTimeline: (elements) => {
         var timeline = new TimelineMax();
-        
+
         elements.each((idx, elem) => {
             console.log(`.${elem.id}`);
             timeline.add(tweens.textFadeInTween(`#${elem.id}`));
@@ -75,7 +75,8 @@ $('.page-text').each(function () {
     var id = $(this).attr('id');
     var textFadeInScene = new ScrollMagic.Scene({
         triggerElement: `#${id}`,
-        triggerHook: 0.1
+        triggerHook: 0.1,
+        duration: '300%'
     })
     .setPin(`#${id}`)
     .setTween(timelines.textFadeInTimeline($(this).children()))
