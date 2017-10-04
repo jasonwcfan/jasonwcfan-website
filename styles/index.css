@@ -17,7 +17,7 @@ html, body {
 }
 
 .page {
-    height: 110vh;
+    height: 400vh;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -43,4 +43,10 @@ html, body {
 
 #where {
     background-color: lightblue;
+}
+
+.body-text {
+    opacity: 0;
+    padding: 15px;
+    font-family: Helvetica;
 }

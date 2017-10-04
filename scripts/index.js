@@ -9,22 +9,39 @@ var controller = new ScrollMagic.Controller();
 
 /** Tweens **/
 var tweens = {
+    // Move title to upper left
     titleMoveToUpperLeftTween: () => new TweenMax.to('#title', 1.5, {
         top: 0,
         left: 0
     }),
+    // Move title to center, slightly above middle
     titleMoveToCenterTween: () => new TweenMax.to('#title', 1.5, {
         left: '50%',
         top: '30%',
         xPercent: '-50',
         yPercent: '-50'
+    }),
+    // Make text fade in
+    textFadeInTween: (selector) => new TweenMax.to(selector, 1.5, {
+        opacity: 1
     })
+
 }
 
 /** Timelines **/
 
 
 /** Scenes **/
+
+// Pins the title to the screen
+var containerScene = new ScrollMagic.Scene({
+
+})
+.setPin('#title')
+.addIndicators()
+.addTo(controller);
+
+// Move the title from center to top left when scrolling past splash page
 var moveToUpperLeftScene = new ScrollMagic.Scene({
     triggerElement: '#who',
     offset: '-100'
@@ -33,6 +50,7 @@ var moveToUpperLeftScene = new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
+// Move the title back to the center on the final page
 var moveToCenterScene = new ScrollMagic.Scene({
     triggerElement: '#where'
 })
@@ -40,9 +58,12 @@ var moveToCenterScene = new ScrollMagic.Scene({
 .addIndicators()
 .addTo(controller);
 
-var containerScene = new ScrollMagic.Scene({
-
+// Have text fade in as the user scrolls
+var textFadeInScene = new ScrollMagic.Scene({
+    triggerElement: '#who',
+    triggerHook: 0.1
 })
-.setPin('#title')
+.setPin('#introduction-text')
+.setTween(tweens.textFadeInTween('#introduction-text'))
 .addIndicators()
 .addTo(controller);
