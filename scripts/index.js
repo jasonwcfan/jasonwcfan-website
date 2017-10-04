@@ -30,6 +30,13 @@ var tweens = {
 
 /** Timelines **/
 
+// Timeline that coordinates text fade-ins
+var textFadeInTimeline = new TimelineMax();
+$('.body-text').each((idx, elem) => {
+    console.log(`.${elem.id}`);
+    textFadeInTimeline.add(tweens.textFadeInTween(`#${elem.id}`));
+})
+console.log(textFadeInTimeline.getChildren());
 
 /** Scenes **/
 
@@ -63,7 +70,7 @@ var textFadeInScene = new ScrollMagic.Scene({
     triggerElement: '#who',
     triggerHook: 0.1
 })
-.setPin('#introduction-text')
-.setTween(tweens.textFadeInTween('#introduction-text'))
+.setPin('.body-text')
+.setTween(textFadeInTimeline)
 .addIndicators()
 .addTo(controller);
