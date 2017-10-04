@@ -1,0 +1,5 @@
+Animations to use from scrollmagic:
+    - Pinning
+    - Section Wipes
+    - Horizontal scroll?
+    - Bezier path to move text to top left
