@@ -7,7 +7,7 @@ import 'debug.addIndicators';
 /** Controller **/
 var controller = new ScrollMagic.Controller();
 
-/** Tweens **/
+/** Tweens Factory **/
 var tweens = {
     // Move title to upper left
     titleMoveToUpperLeftTween: () => new TweenMax.to('#title', 1.5, {
@@ -28,15 +28,20 @@ var tweens = {
 
 }
 
-/** Timelines **/
+/** Timelines Factory **/
+var timelines = {
+    // Timeline that coordinates text fade-ins
+    textFadeInTimeline: (elements) => {
+        var timeline = new TimelineMax();
+        
+        elements.each((idx, elem) => {
+            console.log(`.${elem.id}`);
+            timeline.add(tweens.textFadeInTween(`#${elem.id}`));
+        });
 
-// Timeline that coordinates text fade-ins
-var textFadeInTimeline = new TimelineMax();
-$('.body-text').each((idx, elem) => {
-    console.log(`.${elem.id}`);
-    textFadeInTimeline.add(tweens.textFadeInTween(`#${elem.id}`));
-})
-console.log(textFadeInTimeline.getChildren());
+        return timeline;
+    }
+}
 
 /** Scenes **/
 
@@ -66,11 +71,14 @@ var moveToCenterScene = new ScrollMagic.Scene({
 .addTo(controller);
 
 // Have text fade in as the user scrolls
-var textFadeInScene = new ScrollMagic.Scene({
-    triggerElement: '#who',
-    triggerHook: 0.1
+$('.page-text').each(function () {
+    var id = $(this).attr('id');
+    var textFadeInScene = new ScrollMagic.Scene({
+        triggerElement: `#${id}`,
+        triggerHook: 0.1
+    })
+    .setPin(`#${id}`)
+    .setTween(timelines.textFadeInTimeline($(this).children()))
+    .addIndicators()
+    .addTo(controller);
 })
-.setPin('.body-text')
-.setTween(textFadeInTimeline)
-.addIndicators()
-.addTo(controller);
