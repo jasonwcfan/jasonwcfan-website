@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import ScrollMagic from 'scrollmagic';
-import { TweenMax } from 'gsap';
+import { TweenMax, TimelineMax } from 'gsap';
 import 'animation.gsap';
 import 'debug.addIndicators';
 
@@ -16,14 +16,14 @@ var titleTween = new TweenMax.to('#title', 1.5, {
 /** Scenes **/
 var moveToTopScene = new ScrollMagic.Scene({
     triggerElement: '#who',
-    offset: '-50vh'
+    offset: '-100'
 })
 .setTween(titleTween)
 .addIndicators()
 .addTo(controller);
 
 var containerScene = new ScrollMagic.Scene({
-    triggerElement: '#container'
+
 })
 .setPin('#title')
 .addIndicators()
