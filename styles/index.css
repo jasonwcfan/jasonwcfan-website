@@ -4,14 +4,42 @@ html, body {
     padding: 0;
 }
 
-#block {
-    padding: 10px;
-    border: 1px solid black;
-    font-family: Helvetica;
+.container {
+    outline: 1px dashed orange;
 }
 
-.container {
-    margin: 55vh 0;
-    padding: 50px;
-    outline: 1px dashed orange;
+#title {
+    padding: 10px;
+    position: absolute;
+    font-family: Helvetica;
+    top: 50vh;
+}
+
+.page {
+    height: 110vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#splash {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+}
+
+#who {
+
+}
+
+#why {
+    background-color: lightblue;
+}
+
+#what {
+
+}
+
+#where {
+    background-color: lightblue;
 }
