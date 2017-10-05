@@ -26,7 +26,7 @@ var scenes = {
         new ScrollMagic.Scene({
             triggerElement: '#where'
         })
-        .setTween(Tweens.headerMoveToCenterTween())
+        .setTween(Tweens.moveToCenterTween('#header', 1.5))
         .addIndicators()
         .addTo(controller)
     },

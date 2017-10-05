@@ -9,7 +9,7 @@ var Timelines = {
         var timeline = new TimelineMax();
 
         elements.each((idx, elem) => {
-            timeline.add(Tweens.textFadeInTween(`#${elem.id}`));
+            timeline.add(Tweens.fadeInTween(`#${elem.id}`, 1.5));
         });
 
         return timeline;
@@ -17,8 +17,8 @@ var Timelines = {
     // Timeline that takes care of scrolling past the splash page
     scrollPastSplashTimeline: () => {
         var timeline = new TimelineMax()
-        .add([Tweens.headerMoveToUpperLeftTween(),
-            Tweens.disappearScrollIcon()], null, 'start');
+        .add([Tweens.moveToUpperLeftTween('#header', 1.5),
+            Tweens.fadeOutTween('#scroll-icon', 0.2)], null, 'start');
 
         return timeline;
     }
