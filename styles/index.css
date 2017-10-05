@@ -50,3 +50,8 @@ html, body {
     padding: 15px;
     font-family: Helvetica;
 }
+
+#page-text4 {
+    text-align: center;
+    padding-top: 25vh;
+}

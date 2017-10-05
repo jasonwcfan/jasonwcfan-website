@@ -35,7 +35,6 @@ var timelines = {
         var timeline = new TimelineMax();
 
         elements.each((idx, elem) => {
-            console.log(`.${elem.id}`);
             timeline.add(tweens.textFadeInTween(`#${elem.id}`));
         });
 
@@ -76,7 +75,9 @@ $('.page-text').each(function () {
     var textFadeInScene = new ScrollMagic.Scene({
         triggerElement: `#${id}`,
         triggerHook: 0.1,
-        duration: '300%'
+        // Duration exception for the final page, so the text stays fixed
+        // until the bottom of the page
+        duration: id === 'page-text4' ? 0 :'300%'
     })
     .setPin(`#${id}`)
     .setTween(timelines.textFadeInTimeline($(this).children()))
