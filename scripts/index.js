@@ -74,10 +74,10 @@ $('.page-text').each(function () {
     var id = $(this).attr('id');
     var textFadeInScene = new ScrollMagic.Scene({
         triggerElement: `#${id}`,
-        triggerHook: 0.1,
-        // Duration exception for the final page, so the text stays fixed
+        // Exception for the final page, so the text stays fixed
         // until the bottom of the page
-        duration: id === 'page-text4' ? 0 :'300%'
+        triggerHook: id === 'page-text4' ? 0 : 0.1,
+        duration: id === 'page-text4' ? '300%' :'300%'
     })
     .setPin(`#${id}`)
     .setTween(timelines.textFadeInTimeline($(this).children()))
