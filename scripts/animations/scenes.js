@@ -6,34 +6,32 @@ import 'debug.addIndicators';
 import Tweens from './tweens';
 import Timelines from './timelines';
 
-var Scenes = {
-    Run: (controller) => {
-        // Pins the header to the screen
-        var containerScene = new ScrollMagic.Scene({
-
-        })
+var scenes = {
+    pinHeaderScene: (controller) => {
+        new ScrollMagic.Scene({})
         .setPin('#header')
         .addIndicators()
-        .addTo(controller);
-
-        // Move the header from center to top left when scrolling past splash page
-        var moveToUpperLeftScene = new ScrollMagic.Scene({
+        .addTo(controller)
+    },
+    scrollPastSplashScene: (controller) => {
+        new ScrollMagic.Scene({
             triggerElement: '#who',
             offset: '-100'
         })
         .setTween(Timelines.scrollPastSplashTimeline())
         .addIndicators()
-        .addTo(controller);
-
-        // Move the header back to the center on the final page
-        var moveToCenterScene = new ScrollMagic.Scene({
+        .addTo(controller)
+    },
+    headerMoveToCenterScene: (controller) => {
+        new ScrollMagic.Scene({
             triggerElement: '#where'
         })
         .setTween(Tweens.headerMoveToCenterTween())
         .addIndicators()
-        .addTo(controller);
-
-        // Have text fade in as the user scrolls
+        .addTo(controller)
+    },
+    // Have text fade in as the user scrolls
+    textFadeInScene: (controller) => {
         $('.page-text').each(function () {
             var id = $(this).attr('id');
             var textFadeInScene = new ScrollMagic.Scene({
@@ -51,4 +49,12 @@ var Scenes = {
     }
 }
 
-export default Scenes;
+export default {
+    // Interface to allow calling function to run all the animations
+    // TODO: Implement options that allow for only some of the scenes to be run
+    Run: (controller) => {
+        Object.keys(scenes).forEach((key) => {
+            scenes[key](controller);
+        })
+    }
+};
