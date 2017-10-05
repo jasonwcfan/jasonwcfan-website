@@ -6,13 +6,19 @@ import 'debug.addIndicators';
 import Tweens from './tweens';
 import Timelines from './timelines';
 
+/**
+ * Factory for creating scenes as they are needed
+ * @type {Object}
+ */
 var scenes = {
+    // Pin the header to the screen
     pinHeaderScene: (controller) => {
         new ScrollMagic.Scene({})
         .setPin('#header')
         .addIndicators()
         .addTo(controller)
     },
+    // Handle actions that happen when the user scrolls past the first page
     scrollPastSplashScene: (controller) => {
         new ScrollMagic.Scene({
             triggerElement: '#who',
@@ -22,6 +28,7 @@ var scenes = {
         .addIndicators()
         .addTo(controller)
     },
+    // Handle moving the header back to the centre on the last page
     headerMoveToCenterScene: (controller) => {
         new ScrollMagic.Scene({
             triggerElement: '#where'
@@ -46,6 +53,12 @@ var scenes = {
             .addIndicators()
             .addTo(controller);
         })
+    },
+    // Scene for animating the scroll icon
+    animateScrollIconTimeline: (controller) => {
+        new ScrollMagic.Scene({})
+        .setTween(Timelines.animateScrollIconTimeline())
+        .addTo(controller);
     }
 }
 

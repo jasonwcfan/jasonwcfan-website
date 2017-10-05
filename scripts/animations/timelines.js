@@ -3,6 +3,10 @@ import 'animation.gsap';
 import 'debug.addIndicators';
 import Tweens from './tweens';
 
+/**
+ * Factory for creating timelines as they are needed
+ * @type {Object}
+ */
 var Timelines = {
     // Timeline that coordinates text fade-ins
     textFadeInTimeline: (elements) => {
@@ -19,6 +23,13 @@ var Timelines = {
         var timeline = new TimelineMax()
         .add([Tweens.moveToUpperLeftTween('#header', 1.5),
             Tweens.fadeOutTween('#scroll-icon', 0.2)], null, 'start');
+
+        return timeline;
+    },
+    // Timeline for animating the scroll icon
+    animateScrollIconTimeline: () => {
+        var timeline = new TimelineMax()
+        .add(Tweens.animateScrollIconTween());
 
         return timeline;
     }
