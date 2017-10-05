@@ -9,7 +9,7 @@ var Tweens = {
         left: 0
     }),
     // Disappear scroll icon
-    disappearScrollIcon: () => new TweenMax.to('#scroll-icon', 1.5, {
+    disappearScrollIcon: () => new TweenMax.to('#scroll-icon', 0.2, {
         opacity: 0
     }),
     // Move header to center, slightly above middle
