@@ -21,8 +21,11 @@ var Timelines = {
     // Timeline that takes care of scrolling past the splash page
     scrollPastSplashTimeline: () => {
         var timeline = new TimelineMax()
-        .add([Tweens.moveToUpperLeftTween('#header', 1.5),
-            Tweens.fadeOutTween('#scroll-icon', 0.2)], null, 'start');
+        .add([
+            Tweens.moveToUpperLeftTween('#header', 1.5),
+            Tweens.fadeOutTween('#scroll-icon', 0.2),
+            Tweens.changeTextColourTween('#header', 1.5, '#000000')
+        ], null, 'start');
 
         return timeline;
     },

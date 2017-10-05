@@ -12,6 +12,10 @@ var Tweens = {
         top: 0,
         left: 0
     }),
+    // Change an element's text colour
+    changeTextColourTween: (selector, duration, colour) => new TweenMax.to(selector, duration, {
+        color: colour
+    }),
     // Make an element fade out
     fadeOutTween: (selector, duration) => new TweenMax.to(selector, duration, {
         opacity: 0
