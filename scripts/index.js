@@ -9,13 +9,17 @@ var controller = new ScrollMagic.Controller();
 
 /** Tweens Factory **/
 var tweens = {
-    // Move title to upper left
-    titleMoveToUpperLeftTween: () => new TweenMax.to('#title', 1.5, {
+    // Move header to upper left
+    headerMoveToUpperLeftTween: () => new TweenMax.to('#header', 1.5, {
         top: 0,
         left: 0
     }),
-    // Move title to center, slightly above middle
-    titleMoveToCenterTween: () => new TweenMax.to('#title', 1.5, {
+    // Disappear scroll icon
+    disappearScrollIcon: () => new TweenMax.to('#scroll-icon', 1.5, {
+        opacity: 0
+    }),
+    // Move header to center, slightly above middle
+    headerMoveToCenterTween: () => new TweenMax.to('#header', 1.5, {
         left: '50%',
         top: '30%',
         xPercent: '-50',
@@ -39,33 +43,41 @@ var timelines = {
         });
 
         return timeline;
+    },
+    // Timeline that takes care of scrolling past the splash page
+    scrollPastSplashTimeline: () => {
+        var timeline = new TimelineMax()
+        .add(tweens.headerMoveToUpperLeftTween())
+        .add(tweens.disappearScrollIcon());
+
+        return timeline;
     }
 }
 
 /** Scenes **/
 
-// Pins the title to the screen
+// Pins the header to the screen
 var containerScene = new ScrollMagic.Scene({
 
 })
-.setPin('#title')
+.setPin('#header')
 .addIndicators()
 .addTo(controller);
 
-// Move the title from center to top left when scrolling past splash page
+// Move the header from center to top left when scrolling past splash page
 var moveToUpperLeftScene = new ScrollMagic.Scene({
     triggerElement: '#who',
     offset: '-100'
 })
-.setTween(tweens.titleMoveToUpperLeftTween())
+.setTween(timelines.scrollPastSplashTimeline())
 .addIndicators()
 .addTo(controller);
 
-// Move the title back to the center on the final page
+// Move the header back to the center on the final page
 var moveToCenterScene = new ScrollMagic.Scene({
     triggerElement: '#where'
 })
-.setTween(tweens.titleMoveToCenterTween())
+.setTween(tweens.headerMoveToCenterTween())
 .addIndicators()
 .addTo(controller);
 
