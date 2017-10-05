@@ -59,6 +59,16 @@ var scenes = {
         new ScrollMagic.Scene({})
         .setTween(Timelines.animateScrollIconTimeline())
         .addTo(controller);
+    },
+    // Scene for pinning the photos to the second page
+    pinPhotosScene: (controller) => {
+        new ScrollMagic.Scene({
+            triggerElement: '#who',
+            triggerHook: 0,
+            duration: '300%'
+        })
+        .setPin('#photoreel')
+        .addTo(controller)
     }
 }
 

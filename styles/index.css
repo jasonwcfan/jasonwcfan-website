@@ -4,8 +4,35 @@ html, body {
     padding: 0;
 }
 
-#container {
-    outline: 1px dashed orange;
+.page {
+    height: 400vh;
+    margin: 0;
+    padding: 0;
+}
+
+.text {
+    opacity: 0;
+    padding: 15px;
+    font-family: Helvetica;
+    font-size: 1.5em;
+}
+
+.social-media-icon {
+    height: 1em;
+}
+
+#photoreel {
+    position: absolute;
+    top: 400vh;
+    right: 10px;
+    margin: 10px 10px 10px 10px;
+    border: 10px solid grey;
+    border-radius: 10px;
+}
+
+.photo {
+    display: block;
+    width: 300px;
 }
 
 #header {
@@ -37,13 +64,6 @@ html, body {
     border-radius: 8px;
 }
 
-.page {
-    height: 400vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 #splash {
     background-color: lightblue;
     display: flex;
@@ -66,18 +86,7 @@ html, body {
     background-color: lightblue;
 }
 
-.text {
-    opacity: 0;
-    padding: 15px;
-    font-family: Helvetica;
-    font-size: 1.5em;
-}
-
 #page-text4 {
     text-align: center;
     padding-top: 35vh;
-}
-
-.social-media-icon {
-    height: 1em;
 }
