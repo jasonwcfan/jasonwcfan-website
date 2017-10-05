@@ -49,9 +49,14 @@ html, body {
     opacity: 0;
     padding: 15px;
     font-family: Helvetica;
+    font-size: 1.5em;
 }
 
 #page-text4 {
     text-align: center;
     padding-top: 25vh;
+}
+
+.social-media-icon {
+    height: 1em;
 }
