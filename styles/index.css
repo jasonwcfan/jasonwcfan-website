@@ -74,16 +74,16 @@ html, body {
 
 }
 
-#why {
+/*#why {
     background-color: lightblue;
-}
+}*/
 
 #what {
-
+    background-color: lightblue;
 }
 
 #where {
-    background-color: lightblue;
+    
 }
 
 #page-text4 {
